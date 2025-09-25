@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
 {
   # For home-manager do: (and then do the import)
      # sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
@@ -57,6 +56,14 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.displayManager.startx.enable = true; #just the tty
+
+  # Enable single application cage
+  /*services.cage = {
+    enable = true;
+    program = "/run/current-system/sw/bin/firefox";
+    user = "nixi";
+  };*/
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -119,7 +126,7 @@
         #"force group" = "groupname";
       };
   };
-};
+}
 
   services.samba-wsdd = {
     enable = true;
@@ -130,7 +137,7 @@
   networking.firewall.allowPing = true;
 */
 
-  networking.firewall.enable = false;  
+  networking.firewall.enable = true;  
   # Enable Podman and virtualisation
   virtualisation.containers.enable = true;
   virtualisation = {
@@ -205,7 +212,6 @@
       };
     };
 
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -238,6 +244,7 @@
       pdfjam; #for creating pdfs
   })
   vim
+  #(callPackage /path/to/default.nix {}) #example of a local derivation call
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
