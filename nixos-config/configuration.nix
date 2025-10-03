@@ -224,7 +224,6 @@
       jnoortheen.nix-ide
       haskell.haskell
       justusadam.language-haskell
-      ms-vscode.cpptools-extension-pack
     ];
   })
    freecad
