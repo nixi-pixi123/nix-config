@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   # For home-manager do: (and then do the import)
      # sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
@@ -211,6 +211,14 @@
         };*/
       };
     };
+
+  # Predicate for allowing specific unfree packages
+  # Define their names here and then in the systemPackages
+  # It could be that that specific package has multiple unfree dependencies which will also have to be manually added here
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "hello-unfree"
+    ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
