@@ -224,11 +224,9 @@
       jnoortheen.nix-ide
       haskell.haskell
       justusadam.language-haskell
+      ms-vscode.cpptools-extension-pack
     ];
   })
-   ((emacsPackagesFor emacs).emacsWithPackages (
-    epkgs: [ epkgs.org ]
-  ))
    freecad
    libreoffice-qt
    hunspell
