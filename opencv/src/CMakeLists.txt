@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.3)
+project( TestCV )
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( TestCV TestCV.cpp )
+target_link_libraries( TestCV ${OpenCV_LIBS} )
+install(TARGETS TestCV DESTINATION bin)
