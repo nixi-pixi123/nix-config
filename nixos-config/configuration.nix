@@ -252,6 +252,11 @@
   #(callPackage /path/to/default.nix {}) #example of a local derivation call
   ];
 
+  # Add fonts
+  fonts.packages = with pkgs; [
+  #roboto
+];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
